@@ -79,4 +79,39 @@ describe('Visual monitor testing', function() {
       }, resultsCallback)
       .call(done);
   });
+
+  it('should show the education page',function(done) {
+    client
+      .url(baseUrl + '/yv/en/education/index.asp')
+      .webdrivercss(testName + '.education', {
+        name: '1',
+        exclude:
+          [
+            // Top sidebar.
+            '#slideshow',
+            // Online store.
+            '.ym-gbox-left',
+            // Educational materials.
+            'ym-gbox-right img',
+            // Recurring events.
+            '.ym-gbox-left img',
+          ],
+        remove:
+          [
+            // Social Networks.
+            '.sticky-container',
+          ],
+        hide:
+          [
+            // articles.
+            '.ym-grid li a',
+            '#featured_items',
+            //Special Focus from the e-Newsletter
+            '.ym-gbox-left strong',
+            '.ym-gbox-left p',
+          ],
+        screenWidth: selectedCaps == 'chrome' ? [640, 960, 1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
 });
