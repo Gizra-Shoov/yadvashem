@@ -53,6 +53,8 @@ describe('Visual monitor testing', function() {
   it('should show the home page',function(done) {
     client
       .url(baseUrl)
+      .pause(5000)
+      .click('a.pp_close')
       .webdrivercss(testName + '.homepage', {
         name: '1',
         exclude:
@@ -70,7 +72,8 @@ describe('Visual monitor testing', function() {
         hide:
           [
             // articles.
-            '.ym-grid li a'
+            '.ym-grid li a',
+            '#featured_items'
           ],
         screenWidth: selectedCaps == 'chrome' ? [640, 960, 1200] : undefined,
       }, resultsCallback)
