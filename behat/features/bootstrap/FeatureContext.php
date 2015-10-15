@@ -30,17 +30,26 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   }
 
   /**
-   * @When I wait for the page
+   * @When I visit the homepage
    */
-  public function iWaitForThePage() {
+  public function iVisitTheHomepage() {
+    $this->iAmOnHomepage();
     $this->getSession()->wait(4000);
   }
 
   /**
-   * @Then I wait for options
+   * @When I press :arg1 button
    */
-  public function iWaitForOptions() {
-    $this->iWaitForCssElement('.ym-gbox-left');
+  public function iPressButton($link) {
+    $this->clickLink($link);
+    $this->getSession()->wait(5000);
+  }
+
+  /**
+   * @When I should see :arg1 as option.
+   */
+  public function iShouldSeeAsOption($text) {
+    $this->assertSession()->pageTextContains($this->fixStepArgument($text));
     $this->getSession()->wait(5000);
   }
 

@@ -6,8 +6,6 @@ Feature: Donate
   @javascript
   Scenario: Visit the homepage
     Given I am an anonymous user
-    When  I am on the homepage
-    And   I wait for the page
-    And   I click "Donate Now"
-    Then  I wait for options
-    And   I should see "Donation of $100"
+    When  I visit the homepage
+    And   I follow "Donate Now"
+    And   I should see "Donation of $100" as option.
