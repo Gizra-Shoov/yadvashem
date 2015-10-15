@@ -38,14 +38,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   }
 
   /**
-   * @When I press :arg1 button
-   */
-  public function iPressButton($link) {
-    $this->clickLink($link);
-    $this->getSession()->wait(5000);
-  }
-
-  /**
    * @When I should see :arg1 as option.
    */
   public function iShouldSeeAsOption($text) {
